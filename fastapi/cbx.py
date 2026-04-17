@@ -60,8 +60,7 @@ class CBR:
         self.instance = self.cls(*args, **kwargs)
 
         for _name, endpoint in inspect.getmembers(
-            self.instance,
-            lambda x: inspect.ismethod(x) or inspect.isfunction(x)
+            self.instance, lambda x: inspect.ismethod(x) or inspect.isfunction(x)
         ):
             if cbx_router := endpoint.__annotations__.get("cbx_router"):
                 self.router.add_api_route(
@@ -82,7 +81,6 @@ class cbv:
 
 
 class cbr:
-
     class method:
         def __init__(self, method: str, path: str, *args: Any, **kwargs: Any):
             self.method = method
